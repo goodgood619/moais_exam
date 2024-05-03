@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: db
+    image: 'mysql:5.7'
+    platform: 'linux/amd64'
+    environment:
+      MYSQL_DATABASE: mysqldb
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: 1234
+      TZ: 'Asia/Seoul'
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - data_mysqldb:/var/lib/mysqldb
+    networks:
+      - app_network
+
+  api-server:
+    container_name: api-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app_network
+    depends_on:
+      - mysql
+    restart: always
+
+networks:
+  app_network:
+
+volumes:
+  data_mysqldb: null
