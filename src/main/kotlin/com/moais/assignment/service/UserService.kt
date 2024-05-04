@@ -46,7 +46,7 @@ class UserService(
         val accessToken = jwtTokenProvider.createAccessToken(userId = user.id)
 
         user.token = accessToken // JPA dirty Checking 으로 인한 Entity update
-        return LoginResponse(token = accessToken)
+        return LoginResponse(token = accessToken, id = user.id)
     }
 
     @Transactional
