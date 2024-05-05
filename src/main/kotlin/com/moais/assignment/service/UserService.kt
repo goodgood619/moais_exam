@@ -62,7 +62,6 @@ class UserService(
         val user = userRepository.findByToken(accessToken ?: "")
             ?: throw CustomException(ErrorCode.NOT_EXIST_USER)
 
-        println("user : ${user}")
         userRepository.delete(user)
     }
 }
