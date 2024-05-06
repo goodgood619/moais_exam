@@ -1,3 +1,15 @@
+## TODO List 서비스 개발
+
+* Language : Kotlin
+* Framework : Spring Boot
+* DataBase
+  * test : h2
+  * runtime : mysql
+* 실제 서버를 구성하진 않았고, 
+  * 해당 서버를 실행 시에는
+  * docker와 docker-compose를 깔아야 합니다
+
+
 ### 구현 방향 (회원 가입, 로그인, 로그아웃)
 
 ---
